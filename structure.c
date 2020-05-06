@@ -21,6 +21,7 @@ int main()
     aarchivo = fopen("miarchivo.bin", "r");
     if(aarchivo == NULL)
     {
+        aarchivo = fopen("miarchivo.bin", "w");
         printf("Este archivo esta vacio, asi que debera rellenarlo:\n");
         for(int i=0; i<10; i++)
         {
@@ -41,9 +42,20 @@ int main()
         while ((c = getc(stdin)) != '\n' && c != EOF); //Esta linea hace flush a la entrada
 
         fwrite(array_de_personas, sizeof(Persona), 10, aarchivo);
+        fclose(aarchivo);
         }
     } else
-        printf("%s", array_de_personas);
+        {
+            aarchivo = fopen("miarchivo.bin", "r");
+            for(int i=0; i<10;i++)
+            {
+            printf("%c\n", array_de_personas[i]);
+            }
+            fread(&array_de_personas, sizeof(Persona), 10, aarchivo);
+            fclose(aarchivo);
+        }
+        fclose(aarchivo);
+
    // aarchivo = fopen("miarchivo.bin", "w");
     //if(aarchivo == NULL)
    // {
@@ -54,7 +66,5 @@ int main()
     //fwrite(array_de_personas, sizeof(Persona), 10, aarchivo);
 
 
-    fclose(aarchivo);
+
 }
-
-
