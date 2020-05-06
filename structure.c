@@ -18,7 +18,8 @@ int main()
     char c;
     FILE *aarchivo;
 
-
+for(int i=0; i<10; i++)
+{
     array_de_personas[0].id_persona = 1;
 	printf("Introduzca su nombre completo:\n");
 	fgets(array_de_personas[0].nombre, 99,stdin);
@@ -45,7 +46,7 @@ int main()
     //{
     fwrite(array_de_personas, sizeof(Persona), 10, aarchivo);
     //}
-
+}
     fclose(aarchivo);
 }
 
