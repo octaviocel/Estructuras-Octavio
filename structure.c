@@ -20,20 +20,20 @@ int main()
 
 for(int i=0; i<10; i++)
 {
-    array_de_personas[0].id_persona = 1;
+    array_de_personas[i].id_persona = 1;
 	printf("Introduzca su nombre completo:\n");
-	fgets(array_de_personas[0].nombre, 99,stdin);
+	fgets(array_de_personas[i].nombre, 99,stdin);
     printf("Introduzca el sexo de la persona [H/M]:\n");
-    array_de_personas[0].sexo = getc(stdin);
+    array_de_personas[i].sexo = getc(stdin);
     while ((c = getc(stdin)) != '\n' && c != EOF); //Esta linea hace flush a la entrada
     printf("Introduzca la direccion:\n");
-    fgets(array_de_personas[0].direccion, 99,stdin);
+    fgets(array_de_personas[i].direccion, 99,stdin);
     printf("Introduzca la religion:\n");
-    fgets(array_de_personas[0].religion, 49,stdin);
+    fgets(array_de_personas[i].religion, 49,stdin);
     printf("Introduzca la escolaridad:\n");
-    fgets(array_de_personas[0].escolaridad, 19,stdin);
+    fgets(array_de_personas[i].escolaridad, 19,stdin);
     printf("Introduzca la edad:\n");
-    scanf("%hu", &array_de_personas[0].edad);
+    scanf("%hu", &array_de_personas[i].edad);
     while ((c = getc(stdin)) != '\n' && c != EOF); //Esta linea hace flush a la entrada
 
     aarchivo = fopen("miarchivo.bin", "w");
