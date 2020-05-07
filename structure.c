@@ -18,14 +18,14 @@ int main()
     char c;
     FILE *aarchivo;
 
-    aarchivo = fopen("miarchivo.bin", "r");
+    aarchivo = fopen("miarchivo.bin", "rb");
     if(aarchivo == NULL)
     {
-        aarchivo = fopen("miarchivo.bin", "w");
+        aarchivo = fopen("miarchivo.bin", "wb");
         printf("Este archivo esta vacio, asi que debera rellenarlo:\n");
-        for(int i=0; i<10; i++)
+        for(int i=0; i<2; i++)
         {
-        array_de_personas[i].id_persona = 1;
+        array_de_personas[i].id_persona = i+1;
         printf("Introduzca su nombre completo:\n");
         fgets(array_de_personas[i].nombre, 99,stdin);
         printf("Introduzca el sexo de la persona [H/M]:\n");
@@ -42,17 +42,23 @@ int main()
         while ((c = getc(stdin)) != '\n' && c != EOF); //Esta linea hace flush a la entrada
 
         fwrite(array_de_personas, sizeof(Persona), 10, aarchivo);
-        fclose(aarchivo);
+         fclose(aarchivo);
         }
     } else
         {
-            aarchivo = fopen("miarchivo.bin", "r");
-            for(int i=0; i<10;i++)
-            {
-            printf("%c\n", array_de_personas[i]);
-            }
             fread(&array_de_personas, sizeof(Persona), 10, aarchivo);
-            fclose(aarchivo);
+
+            for(int i=0; i<2;i++)
+            {
+            printf("%d\n", array_de_personas[i].id_persona);
+            printf("%s\n", array_de_personas[i].nombre);
+            printf("%c\n", array_de_personas[i].sexo);
+            printf("%s\n", array_de_personas[i].direccion);
+            printf("%s\n", array_de_personas[i].religion);
+            printf("%s\n", array_de_personas[i].escolaridad);
+            printf("%d\n\n\n", array_de_personas[i].edad);
+            }
+
         }
         fclose(aarchivo);
 
