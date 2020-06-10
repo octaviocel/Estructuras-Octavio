@@ -41,7 +41,7 @@ void nuevo_tiro(){//funcion para ver en donde se realizo el tiro
                 coords[i][j] += 1;//le suma 1
             else if( tablero[i][j] != '*' ){//si la ficha ha sido ocupada
                 coords[i][j] += 1;//le suma 1 para ejemplificar que numero de movimiento es
-                printf("\nEl tiro se realizó en la casilla: [%d] [%d]\n", i+1, j+1);
+                printf("\nEl tiro se realizÃ³ en la casilla: [%d] [%d]\n", i+1, j+1);
             }
         }
     }
@@ -116,13 +116,13 @@ int main()
 
     if(opc == 0){
         do{
-            if(turnos % 2 == 0 || turnos == 0){//si el turno es el primero o impar significa que es el jugador 1
+             if(turnos % 2 == 0 || turnos == 0){//si el turno es el primero o par significa que es el jugador 1
                 printf("\nEl jugador 1 realizo el tiro, se muestra el tablero a continuacion:\n\n");
                 sprintf(buffer1, "jugada_gato1.exe tablero.txt %c %c", piezaalazar[0], piezaalazar[1]);//construye el comando para que se ejecute el programa del jugador1
                 system(buffer1);
                 //printf("%s", buffer1);
             }
-            else{//si el turno es el segundo o par significa que es el jugador 2
+            else{//si el turno es el segundo o impar significa que es el jugador 2
                 printf("\nEl jugador 2 realizo el tiro, se muestra el tablero a continuacion:\n\n");
                 sprintf(buffer2, "jugada_gato2.exe tablero.txt %c %c", piezaalazar[1], piezaalazar[0]);//construye el comando para que se ejecute el programa del jugador2
                 system(buffer2);
@@ -142,7 +142,7 @@ int main()
 
             turnos++;//suma 1 a los turnos
 
-        }while(turnos != 9);//se juega hasta que lleguen a 9 turnos si no hay ganador aún
+        }while(turnos != 9);//se juega hasta que lleguen a 9 turnos si no hay ganador aÃºn
     }
 
     printf("Nadie gana, suerte a la proxima.");
