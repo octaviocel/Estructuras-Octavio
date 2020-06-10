@@ -15,17 +15,17 @@ int coords[3][3] = {0};
 
 char pieza(){
     char randomletter = 'A' + (rand() % 26);
-    return randomletter;
+    return randomletter; //Asigna la letra aleatoria a usar por los jugadores
 }
 
 char* jugador(){
     char* jugadoralazar[3] = {"Daniel","Jairo","Uziel"};
-    return jugadoralazar[rand()% 3];
+    return jugadoralazar[rand()% 3]; //Asigna el jugador aleatorio
 }
 
 
 
-void impresion(){
+void impresion(){ //Funcion que va a imprimir el tablero
     for(int i = 0; i < 3; i++){
         for(int j = 0; j < 3; j++){
             printf("%c ", tablero[i][j]);
@@ -42,13 +42,13 @@ void nuevo_tiro(){
             }
             else if( tablero[i][j] != '*' ){
                 coords[i][j] += 1;
-                printf("\nEl tiro se realizó en la casilla: [%d] [%d]\n", i+1, j+1);
+                printf("\nEl tiro se realizÃ³ en la casilla: [%d] [%d]\n", i+1, j+1);
             }
         }
     }
 }
 
-int wincondition(){
+int wincondition(){ //Funcion de condiciones para que un jugador gane
     int winner = 0;
 
     if(tablero[0][0] == piezaalazar[0] && tablero[0][0] == tablero[0][1] && tablero[0][0] == tablero[0][2]
@@ -93,7 +93,7 @@ int main()
     //miaarchivo = fopen("miarchivo.bin", "wb+");
 
     printf("\n\t== BIENVENIDO A TIC TAC TOE ==\t\n\n");
-    printf("     Se asignara una ficha a cada jugador\n");
+    printf("     Se asignara una ficha a cada jugador\n"); //Menu principal donde da la bienvenida y se le da la ficha a cada jugador
     printf("\tUn momento por favor...Listo!\t\n");
 
     for(int i = 1; i <= 2; i++){
@@ -111,7 +111,7 @@ int main()
     fwrite(tablero, 1, 9, miaarchivo);
     fclose(miaarchivo);
 
-    printf("\n   Para iniciar el juego, presione 0 y Enter: ");
+    printf("\n   Para iniciar el juego, presione 0 y Enter: "); //Inicio del juego
     scanf("%d", &opc);
     while ((d = getc(stdin)) != '\n' && d != EOF); //Esta linea hace flush a la entrada*/
 
@@ -130,15 +130,15 @@ int main()
                 //printf("%s", buffer2);
             }
 
-            miaarchivo = fopen("tablero.txt", "r+");
+            miaarchivo = fopen("tablero.txt", "r+"); //Habre el archivo de tablero
             fread(tablero, 1, 9,miaarchivo);
             fwrite(tablero, 1, 9, miaarchivo);
             fclose(miaarchivo);
 
-            impresion();
-            nuevo_tiro();
+            impresion(); //Llama a funcion impresion del tablero
+            nuevo_tiro(); //Llama a funcion de nuevo tiro
 
-            if(wincondition() == 1) {printf("\n%s gano! Felicidades campeon\n", jugadoralazar[0]); return 0;}
+            if(wincondition() == 1) {printf("\n%s gano! Felicidades campeon\n", jugadoralazar[0]); return 0;} //Revisa las condiciones para determinar si ya gano un jugador
             else if(wincondition() == 2) {printf("\%s gano! Felicidades campeon\n", jugadoralazar[1]); return 0;}
 
             turnos++;
@@ -146,7 +146,7 @@ int main()
         }while(turnos != 9);
     }
 
-    printf("Nadie gana, suerte a la proxima.");
+    printf("Nadie gana, suerte a la proxima."); //Determina el empate o que nadie gana
 
     return 0;
 }
